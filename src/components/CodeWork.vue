@@ -21,13 +21,13 @@ export default {
     data(){
         return {
             countKeyUp: 0,
-            code: null,
-            codeWorked: null,
+            code: '',
+            codeWorked: '',
             num: 1,
         }
     },
     created: function () {
-        window.addEventListener('keyup', this.getKeyUp)
+        window.addEventListener('keyup', this.getKeyUp);
         this.$http.get('/index.html').then((resp)=>{
             this.code = resp.data.trim();
         });
@@ -41,7 +41,7 @@ export default {
             }
             else{
                 if(event.which >= 32 && event.which <= 128)
-                this.countKeyUp = this.countKeyUp + 3;
+                    this.countKeyUp = this.countKeyUp + 3;
             }
 
             if(this.countKeyUp > this.code.length){
@@ -49,10 +49,9 @@ export default {
             }
             this.codeWorked = this.code.substring(0, this.countKeyUp);
 
-            this.num = this.codeWorked.split('\n').length;
-            document.getElementById('code-work').offsetHeight = 
-                document.getElementById('code-work').offsetHeight + 3;
-        }
+            if(this.codeWorked.split('\n'))
+                this.num = this.codeWorked.split('\n').length;
+        },
     }
 }
 </script>

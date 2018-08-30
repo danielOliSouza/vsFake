@@ -15,7 +15,7 @@
             <code-work></code-work>
           </div>
           <div id="terminal">
-            Terminal
+            <terminal/>
           </div>
         </b-col>
       </b-row>
@@ -25,11 +25,13 @@
 
 <script>
 import CodeWork from '@/components/CodeWork'
+import Terminal from '@/components/Terminal'
 
 export default {
   name: "app",
   components: {
-    CodeWork
+    CodeWork,
+    Terminal,
   },
   created(){
 
